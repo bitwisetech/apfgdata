@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <!-- =============================== -->
+  <!-- ==== A/P Lateral Modes   ====== -->
+  <!-- =============================== -->
+  <!--              Output Property    -->
+  <!-- Latr-stg1    dmnd-roll-deg      -->
+  <!-- Latr-stg2    dmnd-roll-rate     -->
+  <!-- Latr-stg3    inbd-ailr-drve     -->
+  <!--                                 -->
+  <!-- =============================== -->
+  <!-- ==== A/P Vertical Modes  ====== -->
+  <!-- =============================== -->
+  <!--              Output Property    -->
+  <!-- Vert-stg1    dmnd-pitch-deg     -->
+  <!-- Vert-stg2    dmnd-pitch-rate    -->
+  <!-- Vert-stg3    inbd-elev-drve     -->
+  <!--                                 -->
+  <!-- =============================== -->
+  <!-- ==== Autotrim Control    ====== -->
+  <!-- =============================== -->
+  <!--              Output Property    -->
+  <!-- Stab-stg1    stab-dmnd-deg      -->
+  <!-- Stab-stg2    stab-rate-dps      -->
+  <!-- Stab-stg3    stab-trim-deg      -->
+  <!-- =============================== -->
+  <!-- ==== Sensor Components   ====== -->
+  <!-- =============================== -->
+  <!--              Output Property    -->
+  <!-- Rate-Txmit-X x-axis-rate-dps    -->
+  <!-- Rate-Txmit-Y y-axis-rate-dps    -->
+  <!-- Rate-Txmit-Z z-axis-rate-dps    -->
+  <!-- Gyro-Pitch   gyro-pitch-deg     -->
+  <!-- Gyro-Roll    gyro-roll-deg      -->
+  <!-- Air-P-Static air-static-inhg    -->
+  <!-- Air-P-Dynam  air-dynamic-inhg   -->
+  <!-- Dynam-Vert-G y-axis-accel-g     -->
+  <!-- =============================== -->
+  <!-- ==== Control Unit Outputs  ==== -->
+  <!-- =============================== -->
+  <!--      Property Name              -->
+  <!--  autopilot/control/power-switch -->
+  <!--  autopilot/control/DOPP-switch  -->
+  <!--  autopilot/control/AP1-switch   -->
+  <!--  autopilot/control/AP2-switch   -->
+  <!--  autopilot/control/ALT-switch   -->
+  <!--  autopilot/control/IAS-switch   -->
+  <!--  autopilot/control/MACH-switch  -->
+  <!--  autopilot/control/HDG-select   -->
+  <!--  autopilot/control/MAN-select   -->
+  <!--  autopilot/control/latr-select  -->
+  <!--  autopilot/control/up-dn-thmb1  -->
+  <!--  autopilot/control/turn-select  -->
+  <!--  autopilot/control/up-dn-thmb2  -->
+  <!--  autopilot/control/datum-adj    -->
+  <!-- =============================== -->
+  <!-- ==== CDI Instrument Outputs === -->
+  <!-- =============================== -->
+  <!--           /cdi-course-knob      -->
+  <!--           /cdi-heading-knob     -->
+  <!-- =============================== -->
+  <!-- ==== Autothrottle   Outputs === -->
+  <!-- =============================== -->
+  <!--           /autothrottle-IAS-set -->
+  <!-- =============================== -->
+  <!-- ==== Control Input Siganls ==== -->
+  <!-- =============================== -->
+  <!--      Property Name              -->
+  <!--  autopilot/master-on            -->
+  <!--  autopilot/yoke-disengage       -->
+  <!--           /cdi-heading-knob     -->
+  <!--           /yaw-dmpr-1-engage    -->
+  <!--           /yaw-dmpr-2-engage    -->
+  <!--           /yaw-dmpr-stby-engage -->
+  <!--           /turn-control-dps     -->
+  <!--           /pitch-wheel          -->
+  <!--           /mano-ALT-hold        -->
+  <!--           /mano-IAS-hold        -->
+  <!--           /mano-MACH-hold       -->
+  <!--           /NAV-hold             -->
+  <!--           /GS-auto-hold         -->
+  <!--           /GS-man-hold          -->
+  <!--           /HDG-hold             -->
+  <!--           /throt-isol-1         -->
+  <!--           /throt-isol-2         -->
+  <!--           /throt-isol-3         -->
+  <!--           /throt-isol-4         -->
+  <!--                                 -->
+  <!-- =============================== -->
+  <!-- ==== Control Fixed Values  ==== -->
+  <!-- =============================== -->
+  <!--      Property Name              -->
+  <!-- Systems/AFCS/autotrim-thold     -->
+  <!-- Systems/AFCS/autotrim-delay-sec -->
+  <!-- Systems/AFCS/GS-Xfeed-ratio     -->
+  <!--                                 -->
+  <!-- =============================== -->
+  <!-- ==== Control Settings      ==== -->
+  <!-- =============================== -->
+  <!-- autopilot/internal/target-alt   -->
+  <!-- autopilot/internal/target-pitch -->
+  <!-- autopilot/internal/target-roll  -->
+  <!-- autopilot/internal/target-IAS   -->
+  <!-- autopilot/internal/target-MACH  -->
+  <!--                                 -->
+  <!--                                 -->
+  <!--                                 -->
+
+  <!--                                 -->
+  <pid-controller>
+    <name>AFCS ROL  </name>
+    <debug>false</debug>
+	  <enable>
+      <condition>
+        <property>/autopilot/settings/engaged</property>
+			  <equals>
+				  <property>/autopilot/settings/heading</property>
+				  <value>dg-heading-hold</value>
+			  </equals>
+			  <equals>
+				  <property>/autopilot/settings/heading-mode</property>
+				  <value>0</value>
+			  </equals>
+      </condition>
+	  </enable>
+    <reference>
+      <condition>
+        <property>/systems/tune/open-latr-stg1</property>
+      </condition>
+  	  <expression>
+        <product>
+          <property>/systems/tune/poke-latr-mark</property>
+          <value>-1.00</value>
+        </product>  
+		  </expression>
+    </reference>
+    <reference>
+      <value>/autopilot/internal0.0</value>
+    </reference>
+    <input>
+      <condition>
+        <property>/systems/tune/open-latr-stg1</property>
+      </condition>
+      <value>0.00</value>
+    </input>
+   <input>
+      <property>/autopilot/internal/target-roll</property>
+    </input>
+    <output>
+      <property>/autopilot/internal/dmnd-roll-deg</property>
+    </output>
+	  <output>
+		  <property>/systems/tune/ap-lat1-out</property>
+	  </output>
+    <config>
+		  <Kp>-1.000</Kp>
+		  <Ti>16.000</Ti> 
+		  <Td>00.0100</Td>
+		  <Ts>0.025</Ts>
+		  <alpha>0.1</alpha> 
+		  <beta>01.000</beta>
+		  <gamma>0.001</gamma>
+      <u_min>-30.0</u_min>
+      <u_max>30.0</u_max>
+    </config>
+  </pid-controller>
+  <!--                                 -->
+
+    
+    
+    
+
+

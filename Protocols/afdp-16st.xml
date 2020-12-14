@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<!-- Fgfs generic IO protocol file sends a set of standard names to python-tcl  viewer -->
+<!--    use e.g. Aircraft/Instruments/afdi-12ch.xml to map props to these names --> 
+
+<PropertyList>
+ <generic>
+  <output>
+   <line_separator>newline</line_separator>
+   <var_separator>|</var_separator>
+
+   <chunk>
+    <name>Ch0</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch0</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch1</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch1</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch2</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch2</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch3</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch3</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch4</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch4</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch5</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch5</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch6</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch6</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch7</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch7</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch8</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch8</node>
+   </chunk>
+
+   <chunk>
+    <name>Ch9</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-Ch9</node>
+   </chunk>
+
+   <chunk>
+    <name>ChA</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-ChA</node>
+   </chunk>
+
+   <chunk>
+    <name>ChB</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-ChB</node>
+   </chunk>
+
+   <chunk>
+    <name>ChC</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-ChC</node>
+   </chunk>
+
+   <chunk>
+    <name>ChD</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-ChD</node>
+   </chunk>
+
+   <chunk>
+    <name>ChE</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-ChE</node>
+   </chunk>
+
+   <chunk>
+    <name>ChF</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/afdi-ChF</node>
+   </chunk>
+
+   <!-- For stop-start version of scope uncomment the following stanza -->
+   <chunk>
+    <name>SupvCh</name>
+    <format>%+000.9f</format>
+    <type>float</type>
+    <node>systems/tune/scope-run</node>
+   </chunk>
+
+  </output>
+ </generic>
+</PropertyList>

@@ -1,0 +1,219 @@
+﻿<?xml version="1.0"?>
+ <!--    -->
+ <!--  Connect generic autopilot signals to standard names for afdi scope  -->
+ <!--     use different input props as scope input connections -->
+ <!--       actual labels are defined in as16.py           -->
+ <!--    -->
+<PropertyList>
+
+<debug type="bool">false</debug>
+
+  <filter>
+    <name>Lat1 Err</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		 <property>/autopilot/internal/target-roll-deg-unfiltered</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch0</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>Lat1 Out</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/systems/tune/ap-lat1-out</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch1</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>Lat2 Err</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/autopilot/internal/target-roll-deg</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-Ch2</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>Lat2 Out</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/systems/tune/ap-lat2-out</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-Ch3</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>AILR </name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/controls/flight/aileron</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch4</property>
+    </output>
+  </filter>
+
+  <filter>
+		<name>ALTRM Drive</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <!--property>/controls/flight/aileron-trim</property-->
+		  <!--property>/instrumentation/nav/radials/target-auto-hdg-deg</property-->
+      <property>autopilot/internal/target-kp-for-heading-deg</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-Ch5</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>RUDD</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/controls/flight/rudder</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch6</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>RTRM</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <!--property>/controls/flight/rudder-trim</property-->
+      <!--property>b707/hsi/indicated-heading-deg</property-->
+      <property>autopilot/internal/target-ti-for-heading-hold</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch7</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>ROLL </name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/orientation/roll-deg</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch8</property>
+    </output>
+  </filter>
+
+  <!--    -->
+  <!--    -->
+  
+  <filter>
+    <name>Vrt1 Err</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/autopilot/settings/target-altitude-ft</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-Ch9</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>Vrt1 Out</name>
+		<debug type="bool">false</debug>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/systems/tune/ap-vrt1-out</property>
+    </input>
+    <output>
+		  <property>/systems/tune/afdi-ChA</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>Vrt2 Err</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/systems/tune/ap-vrt2-err</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-ChB</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>Vrt2 Out</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/systems/tune/ap-vrt2-out</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-ChC</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>ELEV</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/controls/flight/elevator</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-ChD</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>ELTRM</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/controls/flight/elevator-trim</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-ChE</property>
+    </output>
+  </filter>
+
+  <filter>
+    <name>PITCH</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+		  <property>/orientation/pitch-deg</property>
+    </input>
+    <output>
+			<property>/systems/tune/afdi-ChF</property>
+    </output>
+  </filter>
+
+</PropertyList>
